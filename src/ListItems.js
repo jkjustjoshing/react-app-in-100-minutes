@@ -20,7 +20,7 @@ class ListItems extends Component {
   render() {
     return <ul>
       {
-        this.state.items.map(item => <li>{item.name}, {item.number}</li>)
+        this.state.items.map((item, index) => <li key={index}>{item.name}, {item.number}</li>)
       }
     </ul>
   }

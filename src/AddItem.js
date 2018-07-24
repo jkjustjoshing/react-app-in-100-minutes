@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import firestore from './firestore';
 
 class AddItem extends Component {
 
@@ -13,7 +15,11 @@ class AddItem extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+
+    firestore.collection('items').add(this.state).then(() => {
+      // Redirect to list route
+      this.props.history.push('');
+    });
   }
 
   handleChange = (event) => {
@@ -34,4 +40,4 @@ class AddItem extends Component {
   }
 }
 
-export default AddItem;
+export default withRouter(AddItem);
