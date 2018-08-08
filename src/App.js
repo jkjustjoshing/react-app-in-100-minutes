@@ -17,6 +17,18 @@ class App extends Component {
           <nav>
             <Link to="">List Items</Link>
             <Link to="/addItem">Add Item</Link>
+            <Route
+              path="/addItem"
+              children={
+                ({match}) => {
+                  if (!match) {
+                    return <Link to="/addItem">Add item custom</Link>
+                  } else {
+                    return null;
+                  }
+                }
+              }
+            />
           </nav>
         </header>
         <section>
